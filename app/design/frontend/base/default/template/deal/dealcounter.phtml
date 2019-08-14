@@ -1,0 +1,47 @@
+<?php
+$comefrom   = $this->getComeFrom();
+$product_id = $comefrom['product_id'];
+
+$width      = $comefrom['come_from'] == 'view' ?  300 : 200;
+$height     = $comefrom['come_from'] == 'view' ?  60 : 40;
+$countervar = $comefrom['come_from'] == 'onepage' ?  2 : 3;
+
+$collection = 	Mage::getModel('deal/deal')->getCollection()
+		->addFieldToFilter('status',1)
+		->addFieldToFilter('product_id',$product_id,'AND');
+$dealdata   = ($collection->getData());
+$todaydata  = strtotime(date('Y-m-d H:i:s'));
+$startdata  = strtotime($dealdata[0]['start_date']);
+$enddata    = strtotime($dealdata[0]['end_date']);
+$qty        = ($dealdata[0]['qty']);
+$deal_id    = ($dealdata[0]['deal_id']);
+$style      = ($dealdata[0]['style']== '0'? 'flip': 'boring');
+
+if($todaydata>$startdata  && $todaydata<$enddata && $qty>0) { ?>
+<h2>Deal expire in:</h2>
+	<div class="short-description" id="countdown">
+		<?php $different = ($enddata-$todaydata);
+		?>
+		<script type="application/javascript">
+			
+		var myCountdown<?php echo $countervar; ?> = new Countdown({
+											time: <?php  echo $different;  ?>, 
+											width:<?php  echo $width;  ?>, 
+											height:<?php  echo $height;  ?>,  
+											rangeHi:"day",
+											style:"<?php  echo $style;  ?>",
+											onComplete : doneHandler
+											});
+		
+		function doneHandler(result) {
+			
+			new Ajax.Request('<?php echo Mage::getBaseUrl()?>deal/index/setstatus', {
+				  method: 'post',
+				  parameters: {deal_id: '<?php echo $deal_id; ?>',}
+				});
+			 location.reload(); 
+				}
+		</script>
+	</div>
+<?php   }  ?>
+

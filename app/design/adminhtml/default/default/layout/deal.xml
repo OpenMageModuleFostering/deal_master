@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <deal_adminhtml_deal_edit>
+        <reference name="head">
+            <action method="addItem">
+				<type>js</type>
+				<name>autosearch/autosearch.js</name>
+			</action>
+        </reference>
+    </deal_adminhtml_deal_edit>
+</layout>

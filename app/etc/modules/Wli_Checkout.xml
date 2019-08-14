@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wli_Checkout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wli_Checkout>
+    </modules>
+</config>

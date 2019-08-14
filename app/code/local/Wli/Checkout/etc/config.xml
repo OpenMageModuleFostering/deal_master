@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+<frontend>
+  <routers>
+     <checkout> // Name of the core module
+       <args>
+          <modules>
+		<Wli_Checkout before="Mage_Checkout">Wli_Checkout</Wli_Checkout>	
+	   </modules>	
+       </args>
+    </checkout>
+ </routers>
+</frontend>
+</config>

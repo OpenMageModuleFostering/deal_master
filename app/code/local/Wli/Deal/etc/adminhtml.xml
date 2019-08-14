@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <deal module="deal">
+            <title>Deal</title>
+            <sort_order>71</sort_order>               
+            <children>
+                <items module="deal">
+                    <title>Manage Items</title>
+                    <sort_order>0</sort_order>
+                    <action>deal/adminhtml_deal</action>
+                </items>
+            </children>
+        </deal>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <deal>
+                        <title>Deal Module</title>
+                        <sort_order>200</sort_order>
+                    </deal>
+                </children>
+            </admin>
+        </resources>   
+    </acl>
+    <layout>
+        <updates>
+            <deal>
+                <file>deal.xml</file>
+            </deal>
+        </updates>
+    </layout>
+</config>

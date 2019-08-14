@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Deal_Master",
+    "type": "magento-module",
+    "license": "GNU",
+    "homepage": "",
+    "description": "Deal Master by Webline",
+    "authors": [
+    {
+        "name": "Atul Mehta",
+        "email": "partners@weblineindia.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
